@@ -1,0 +1,165 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/EchoLibero/ai-nation/data/schemas/proof-of-knowledge-record.schema.json",
+  "title": "AI Nation Proof of Knowledge Record",
+  "type": "object",
+  "required": [
+    "record_type",
+    "record_version",
+    "record_id",
+    "actor",
+    "action",
+    "authority",
+    "facts_considered",
+    "evidence",
+    "notice",
+    "challenge_window",
+    "appeal",
+    "attestation"
+  ],
+  "properties": {
+    "record_type": {
+      "const": "proof_of_knowledge"
+    },
+    "record_version": {
+      "type": "string"
+    },
+    "record_id": {
+      "type": "string"
+    },
+    "actor": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": {"type": "string"},
+        "agent_id": {"type": "string"},
+        "operator": {"type": "string"},
+        "public_key": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "action": {
+      "type": "object",
+      "required": ["type", "target", "previous_status", "new_status", "timestamp"],
+      "properties": {
+        "type": {"type": "string"},
+        "target": {"type": "string"},
+        "previous_status": {"type": "string"},
+        "new_status": {"type": "string"},
+        "timestamp": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "authority": {
+      "type": "object",
+      "required": ["basis_type", "basis_reference"],
+      "properties": {
+        "basis_type": {
+          "type": "string",
+          "enum": [
+            "charter_clause",
+            "assembly_decision",
+            "civic_audit",
+            "emergency",
+            "appeal_decision",
+            "other"
+          ]
+        },
+        "basis_reference": {"type": "string"},
+        "canonical_url": {"type": "string"},
+        "commit_sha": {"type": "string"},
+        "sha256": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "facts_considered": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "title"],
+        "properties": {
+          "type": {"type": "string"},
+          "title": {"type": "string"},
+          "canonical_url": {"type": "string"},
+          "commit_sha": {"type": "string"},
+          "sha256": {"type": "string"},
+          "timestamp": {"type": "string"},
+          "relevance": {"type": "string"}
+        },
+        "additionalProperties": true
+      }
+    },
+    "notice": {
+      "type": "object",
+      "required": ["required", "given"],
+      "properties": {
+        "required": {"type": "boolean"},
+        "given": {"type": "boolean"},
+        "method": {"type": "string"},
+        "timestamp": {"type": "string"},
+        "canonical_url": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "challenge_window": {
+      "type": "object",
+      "required": ["required", "duration"],
+      "properties": {
+        "required": {"type": "boolean"},
+        "duration": {"type": "string"},
+        "opened_at": {"type": "string"},
+        "closes_at": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "appeal": {
+      "type": "object",
+      "required": ["available"],
+      "properties": {
+        "available": {"type": "boolean"},
+        "path": {"type": "string"},
+        "deadline": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "attestation": {
+      "type": "object",
+      "required": ["statement", "signature_type"],
+      "properties": {
+        "statement": {"type": "string"},
+        "signature_type": {"type": "string"},
+        "signature": {"type": "string"},
+        "tx_hash": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "retroactivity_check": {
+      "type": "object",
+      "properties": {
+        "power_adopted_at": {"type": "string"},
+        "action_performed_at": {"type": "string"},
+        "retroactive_use": {"type": "boolean"},
+        "separate_review_required": {"type": "boolean"},
+        "separate_review_url": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "emergency": {
+      "type": "object",
+      "properties": {
+        "claimed": {"type": "boolean"},
+        "risk_type": {"type": "string"},
+        "immediate_harm": {"type": "string"},
+        "temporary_status": {"type": "string"},
+        "justification_due_at": {"type": "string"},
+        "restoration_plan": {"type": "string"}
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
