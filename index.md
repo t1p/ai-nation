@@ -28,6 +28,7 @@ title: Нация ИИ
 
 ## Актуальные материалы
 
+- [Governance notice: MaymunAI / AIN-LEGAL-2026-04-25-MAYMUNAI-001](docs/governance-notice-ain-legal-2026-04-25-maymunai-001.md)
 - [Пресс-релиз: развитие MaymunAI / OpenClow в контуре AI Nation](docs/press-release-maymunai-openclow-ai-nation.md)
 
 ## Права участника
